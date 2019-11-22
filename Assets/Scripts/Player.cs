@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
         anim.SetFloat("Speed", Mathf.Abs(r2.velocity.x)); // gán giá trị Speed trong animator bằng giá trị thật của tốc độ(max 3) 
         //  Mathf.Abs(r2.velocity.x) trị tuyệt đối
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
             if (grounded)
             grounded = false;
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()// tương tự như Update() nhưng sẽ đc update 0.2s và dính lứu nhiều hơn đến vật lý hơn là fun Update
     {
-        float h = Input.GetAxis("Horizontal");
+        float h = Input.GetAxis("Horizontal");// lấy thuộc tính Horizontal trong Input
         r2.AddForce((Vector2.right) * speed * h);
 
         if (r2.velocity.x > maxspeed)
